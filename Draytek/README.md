@@ -3,8 +3,7 @@
 This portal has been tested on the following hardware:
 
 ```
-Vendor: Draytek
-Device: Vigor2862
+Device: Draytek Vigor2862
 Redirect Method: GET
 ```
 
