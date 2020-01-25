@@ -19,7 +19,7 @@ session_start();
 	<p>Welcome!<br>
 	Please login to our Wifi service</p>
 
-	<form method="POST" action="uam_handle_form.php">
+	<form method="POST" action="connect.php">
   	<label>User Name: <input type="text" name="username"></label><br/>
   	<label>Password: <input type="text" name="password"></label><br/>
   	<input type="hidden" name="challenge" value="<?php echo $_GET["challenge"] ?>">
