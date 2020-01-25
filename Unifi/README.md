@@ -3,11 +3,11 @@ This is an example of a PHP based external captive portal for Unifi. The code gi
 https://github.com/Art-of-WiFi/UniFi-API-client
 
 To run this you also need to install the Unifi API client. The can be done using Composer. Include the following code in your composer.json file:
-
+```
 {
     "require": {
         "art-of-wifi/unifi-api-client": "^1.1"
     }
 }
-
-This portal will authorize the user for 30 minutes and then redirect the user to Google. In connecting.php you need to enter the correct values for $site_id, $controlleruser, $controllerpassword, $controllerurl and $controllerversion.
+```
+This portal will authorize the user for 30 minutes and then redirect the user to Google. In connecting.php you need to enter the correct values for `$site_id`, `$controlleruser`, `$controllerpassword`, `$controllerurl` and `$controllerversion`.
