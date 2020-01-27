@@ -2,8 +2,10 @@
 
 This is an example of a PHP based external captive portal for NoDogSplash (NDS) using its Forwarding Authentication Service (FAS). The code given here can be used to setup a basic captive portal featuring an HTML login form.
 
-NDS supports sending the client token to the external captive portal aka FAS in clear text as well as in encrypted format. This portal is for the latter case in which `fas_secure_enabled` option is set to `2` in NDS config file.
-
+NDS supports sending the client token to the external captive portal aka FAS in clear text as well as in encrypted format. This portal is for the latter case in which `fas_secure_enabled` option is set to `2` in NDS config file. NDS while redirecting the user to fas passes two encrypted parameters `fas` and `iv` in the HTML GET request. The code given here decrypts them to reveal the following parameters:
+```
+clientip, clientmac, gatewayname, tok, gatewayaddress, authdir, originurl
+```
 The original code for this can be found here:
 
 https://github.com/nodogsplash/nodogsplash/blob/master/forward_authentication_service/fas-aes/fas-aes.php
