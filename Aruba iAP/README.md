@@ -10,3 +10,5 @@ Authentication text is the simplest scheme. In it nothing is POSTed back to the 
 It is configured on the iAP like this:
 
 ![Auth text settings](https://github.com/nasirhafeez/capport/blob/master/Aruba%20iAP/Auth%20Text%20Settings.png)
+
+The files `index.php` and `login.php` are for auth text based login. The file `userlogin.html` is for username password based login. It can be based on local user database or RADIUS.
