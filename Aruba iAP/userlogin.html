@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>WiFi Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+    <body>
+		<p>Welcome!<br>
+		Please login to our Wifi service</p>
+
+		<form method=POST action="http://securelogin.arubanetworks.com/cgi-bin/login">
+			Username: <input name=user value="">
+			Password: <input name=password value="">
+			<input name=cmd value="authenticate" type="hidden">
+			<input name=mac value="" type="hidden">
+			<input name=ip value="" type="hidden">
+			<input name=essid value="" type="hidden">
+			<input name=url value="http://www.google.com" type="hidden">
+			<BR><input type="submit" name="Login" value="login" class="button" />
+		</form>
+    </body>
+</html>
