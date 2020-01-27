@@ -9,3 +9,7 @@ The original code for this can be found here:
 https://github.com/nodogsplash/nodogsplash/blob/master/forward_authentication_service/fas-aes/fas-aes.php
 
 The `$redir` parameter may be set to redirect the client after successful authorization.
+
+The NDS documentation is very clear and detailed and can be found here:
+
+https://nodogsplashdocs.readthedocs.io/en/stable/overview.html
