@@ -7,3 +7,5 @@ https://github.com/cloudtrax/docs/tree/master/captive_portal/splash_pages/extern
 This has been tested on OpenWRT 18.06 firmware.
 
 The `username` and `password` entered by the user and sent to the AP which then sends them to the configured RADIUS server for authentication. The `$uam_secret` has to match with the UAM secret defined in Coova Chilli's config file.
+
+Xirrus APs also use Coova Chilli so this code will also work with them.
