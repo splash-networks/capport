@@ -4,7 +4,11 @@ This is an example of a PHP based external captive portal for Unifi. The code gi
 
 https://github.com/Art-of-WiFi/UniFi-API-client
 
-To run this you need to install the Unifi API client. The can be done using Composer. Include the following code in your composer.json file:
+To run this you need to install the Unifi API client. The can be done using Composer:
+```
+composer require art-of-wifi/unifi-api-client
+```
+Or include the following code in your composer.json file:
 ```
 {
     "require": {
