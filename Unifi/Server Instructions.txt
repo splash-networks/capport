@@ -1,0 +1,23 @@
+*********************
+Tested on Ubuntu 16
+*********************
+
+Step 1:
+
+apt-get -y install apache2 nano curl software-properties-common python-software-properties
+
+Step 2:
+
+add-apt-repository ppa:ondrej/php
+
+Step 3:
+
+apt-get update
+
+Step 4:
+
+apt-get install -y --allow-unauthenticated php7.2 php-pear php7.2-curl php7.2-dev php7.2-xml php7.2-gd php7.2-mbstring php7.2-zip php7.2-mysql php7.2-xmlrpc php-curl libapache2-mod-php
+
+Step 5:
+
+systemctl restart apache2
