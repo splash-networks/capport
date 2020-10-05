@@ -17,3 +17,9 @@ Or include the following code in your composer.json file:
 }
 ```
 This portal will authorize the user for 30 minutes on the Unifi controller and redirect them to Google. In connecting.php you need to enter the correct values for `$site_id`, `$controlleruser`, `$controllerpassword`, `$controllerurl` and `$controllerversion`.
+
+For an Android client the redirect parameters are as follows:
+
+```
+Array ( [ap] => 44:d9:e7:0a:80:43 [id] => 70:8a:09:65:4d:ec [t] => 1601896413 [url] => http://connectivitycheck.platform.hicloud.com/generate_204_291a4662-e11c-4a24-aa5c-e16876b713f3 [ssid] => Unifi Zigsa )
+```
