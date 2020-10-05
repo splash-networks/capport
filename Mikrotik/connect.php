@@ -28,8 +28,7 @@ $username="admin";
                         function doLogin() {
                                         <?php if(strlen($chapid) < 1) echo "return true;\n"; ?>
                                         document.sendin.username.value = document.login.username.value;
-                                        document.sendin.password.value = hexMD5('\011\373\054\364\002\233\266\263\270\373\17
-3\323\234\313\365\337\356');
+                                        document.sendin.password.value = hexMD5('\011\373\054\364\002\233\266\263\270\373\173\323\234\313\365\337\356');
                                         document.sendin.submit();
                                         return false;
                         }
