@@ -6,7 +6,7 @@ https://wiki.mikrotik.com/wiki/HotSpot_external_login_page
 ```
 This code will authorize the user with the username `admin` and a blank password.
 
-The router redirecting the user uses the following `POST` parameters. Being `POST` the parameters are not displayed in the URL.
+The router redirecting the user can use the following `POST` parameters. Being `POST` the parameters are not displayed in the URL.
 
 ```
 <form name="redirect" action="https://example.com" method="post">
