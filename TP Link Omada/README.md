@@ -11,6 +11,6 @@ Array ( [clientMac] => 70-8A-09-65-4D-EC [t] => 1611814464 [site] => Default [re
 The basic code has been taken from [here](https://www.tp-link.com/us/support/faq/2907/) and adapted for our use. As of this writing (Feb 2021) the code on the TP Link website has a couple of mistakes:
 
 1. The time parameter's unit is ms and not seconds as given on TP Link's website
-2. The parameter `authType: 4` has to be included in the authorization request as well.
+2. The parameter `authType: 4` has to be included in the authorization request
 
 This code has been tested on Omada Controller `v4.2.8` with EAP225 `v3.0 (Firmware version 5.0.0 Build 20200918 Rel. 58628)`
