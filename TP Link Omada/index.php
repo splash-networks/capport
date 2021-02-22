@@ -14,7 +14,7 @@ $seconds = 3600000;
 $username = 'operator1';
 $password = 'operator1';
 
-#########################################################################
+########### The code below this line does not need to be modified ###########
 
 $clientMac = $_GET["clientMac"];
 $apMac = $_GET["apMac"];
