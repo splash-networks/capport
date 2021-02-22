@@ -7,3 +7,5 @@ For an Android client the redirect parameters are as follows:
 ```
 Array ( [clientMac] => 70-8A-09-65-4D-EC [t] => 1611814464 [site] => Default [redirectUrl] => http://connectivitycheck.platform.hicloud.com/generate_204_f21c2352-3274-4ab1-8e8b-c00bbfc52ae4 [apMac] => B0-95-75-15-93-44 [ssidName] => eap225 [radioId] => 0 )
 ```
+
+The basic code has been taken from [here](https://www.tp-link.com/us/support/faq/2907/).
