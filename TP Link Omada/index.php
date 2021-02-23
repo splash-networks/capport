@@ -1,5 +1,7 @@
 <?php
 
+########### Set the following parameters according to your environment ###########
+
 // IP and port of Omada Controller
 
 $controllerIP = '192.168.8.175';
@@ -99,5 +101,18 @@ curl_setopt_array($curlAuth, array(
 $res = curl_exec($curlAuth);
 
 curl_close($curlAuth);
+
+if ($res !== false) {
+  $json = json_decode($res, true);
+  $code = $json['errorCode'];
+  if ($code == "0") {
+    echo "You are now authorized on the WiFi network";
+  } else {
+    die("Error: check with your network administrator");
+  }
+}
+else {
+  die("Error: check with your network administrator");
+}
 
 ?>
