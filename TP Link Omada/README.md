@@ -2,6 +2,8 @@
 
 This is an example of a PHP based external captive portal for TP Link Omada Controller. The code given here can be used to setup a basic captive portal for authorizing WiFi clients. The Omada Controller has to be reachable from the captive portal web server for client authorization to work.
 
+This code requires the use of cookies. Create a folder named `cookies` in the same folder where `index.php` is located and set its permissions such that the web server is able to write to it.
+
 For an Android client the redirect parameters are as follows:
 
 ```
