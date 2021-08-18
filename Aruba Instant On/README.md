@@ -21,7 +21,7 @@ FreeRADIUS Access-Request
 (0)   Calling-Station-Id = "f262e79963c6"
 (0)   Called-Station-Id = "d015a6c274d0"
 (0)   Framed-IP-Address = 172.16.0.221
-(0)   Aruba-Essid-Name = "aruba guest"
+(0)   Aruba-Essid-Name = "wifi.ten"
 (0)   Aruba-Location-Id = <redacted (device serial number)>
 (0)   Aruba-AP-Group = "InstantOn-C2:74:D0"
 (0)   Message-Authenticator = 0xdf504be2ae2fc5bf3d362cad0014b260
