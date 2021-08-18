@@ -26,3 +26,4 @@ FreeRADIUS Access-Request
 (0)   Aruba-AP-Group = "InstantOn-C2:74:D0"
 (0)   Message-Authenticator = 0xdf504be2ae2fc5bf3d362cad0014b260
 ```
+Tested on Aruba Instant on AP 11.
