@@ -1,13 +1,9 @@
 <?php
 
-$mac=$_GET["mac"];
-$ip=$_GET["ip"];
-$apmac=$_GET["apmac"];
 $posturl = $_GET['post'];
 
 ?>
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -18,16 +14,13 @@ $posturl = $_GET['post'];
 		<p>Welcome!<br>
 		Please login to our Wifi service</p>
 
-		<form method="post" action="login.php">
-			Name
-			<input type="text" name="name" placeholder="Insert Name"><br>
-			Email
-			<input type="email" name="email" placeholder="Insert Email"><br>
-			<input type="hidden" name="mac" value="<?php echo $mac;?>">
-			<input type="hidden" name="ip" value="<?php echo $ip;?>">
-			<input type="hidden" name="apmac" value="<?php echo $apmac;?>">
-      <input type="hidden" name="posturl" value="<?php echo $posturl;?>">
-			<input type="submit" value="Sign up">
+		<form method=POST action="https://<?php echo htmlspecialchars($post_url); ?>/cgi-bin/login">
+			Username
+			<input type="text" name="username" placeholder="Insert Username"><br>
+			Password
+			<input type="text" name="password" placeholder="Insert Password"><br>
+			<input name=cmd value="authenticate" type="hidden">
+			<input type="submit" value="Login">
 		</form>
     </body>
 </html>
