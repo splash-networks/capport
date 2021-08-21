@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<div id="errorHint" style="color:red"></div>
+<div><span>username:</span><input type="text" id="username" name="username"/> </div>
+<div><span>password:</span><input type="password" id="password" name="password"/></div>
+<button onclick="doSubmit()">submit</button>
+<script type="text/javascript">
+    var errorHintMap = {
+        "-1": "General error.",
+        "-1001": "Invalid request parameters.",
+        "-41506": "Invalid Authorization Information.",
+        "-41500": "Invalid authentication type.",
+        "-41501": "Failed to authenticate.",
+        "-41529": "Incorrect username or password.",
+        "-41530": "Connecting to the RADIUS server times out."
+    };
+    var submitUrl = getQueryString("scheme") + "://" + getQueryString("target") + ":" + getQueryString("targetPort") + "/portal/radius/auth";
+
+
+    var clientMac = getQueryString("clientMac");
+    var clientIp = getQueryString("clientIp");
+    var apMac = getQueryString("apMac");
+	var gatewayMac = getQueryString("gatewayMac");
+    var ssidName = getQueryString("ssidName");
+	var vid = getQueryString("vid");
+    var radioId = getQueryString("radioId");
+    var originUrl = decodeURIComponent(getQueryString("originUrl"));
+	var authType = 2;
+    var submitData = {
+        clientMac: clientMac,
+        clientIp: clientIp,
+        apMac: apMac,
+		gatewayMac: gatewayMac,
+		ssidName: ssidName,
+		vid: vid,
+        radioId: radioId,
+        originUrl: originUrl,
+		authType: authType
+    };
+    var xhr;
+    function doSubmit() {
+        submitData.username = document.getElementById("username").value;
+        submitData.password = document.getElementById("password").value;
+		if (submitData.apMac == null || submitData.apMac == ""){
+		    submitData.apMac =  undefined;
+		}
+		
+		if (submitData.gatewayMac == null || submitData.gatewayMac == ""){
+			submitData.gatewayMac = undefined;
+		}
+
+        xhr = null;
+        if(window.XMLHttpRequest) {
+            xhr=new XMLHttpRequest();
+        }else {
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xhr.open('POST',submitUrl,true);
+		xhr.setRequestHeader( "Content-Type" , "text/plain;charset=utf-8" );
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4 && xhr.status==200){
+                var code = JSON.parse(xhr.responseText).errorCode;
+                if (code === 0) {
+                    location.href = originUrl;
+                } else {
+                    document.getElementById("errorHint").innerHTML = errorHintMap[code];
+                }
+            } else {
+                document.getElementById("errorHint").innerHTML = xhr.statusText;
+            }
+        }
+        xhr.send(JSON.stringify(submitData));
+    }
+
+    function getQueryString(name) {
+
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+
+        var r = window.location.search.substr(1).match(reg);
+
+        if (r != null && r != "") return unescape(r[2].replace(/\+/g, "%20")); return null;
+
+    }
+
+</script>
