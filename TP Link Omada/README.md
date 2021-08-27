@@ -4,6 +4,21 @@ This is an example of a PHP based external captive portal for TP Link Omada Cont
 
 For "External RADIUS Server" with "External Web Portal" the required files are located in the `RADIUS` folder and consist of the files `index.php` and `login.php`. The file `radius.html` is taken from TP-Link's [website](https://www.tp-link.com/pk/support/faq/2912/) and only a single modification is made in Line 17: hardcoding the public IP of Omada Controller as the IP received in query string might contain private IP which is not useful for connecting back to the controller for user authorization if portal server is located on the internet. This setup will only work when the portal is HTTP based as HTTP to HTTPS connection from client side is blocked by browsers. This problem is resolved in `index.php` and `login.php` by using PHP and CURL for initiating API call to controller from server-side. For HTTPS based portals `index.php` and `login.php` should be used whereas for HTTP based portals `radius.html` may be used.
 
+For External captive portal without RADIUS the file `index.php` will be used. This code requires the use of cookies. Create a folder named `cookies` in the same folder where `index.php` is located and set its permissions such that the web server is able to write to it.
+
+The basic code has been taken from [here](https://www.tp-link.com/us/support/faq/2907/) and adapted for our use. As of this writing (Feb 2021) the example code given on the TP Link website has a couple of mistakes:
+
+1. The time parameter's unit is milliseconds and not seconds as given on TP Link's website
+2. The parameter `authType: 4` has to be included in the authorization request
+
+This code has been tested on Omada Controller `v4.2.8` with EAP225 `v3.0 (Firmware version 5.0.0 Build 20200918 Rel. 58628)`
+
+For an Android client the redirect parameters are as follows:
+
+```
+Array ( [clientMac] => 70-8A-09-65-4D-EC [t] => 1611814464 [site] => Default [redirectUrl] => http://connectivitycheck.platform.hicloud.com/generate_204_f21c2352-3274-4ab1-8e8b-c00bbfc52ae4 [apMac] => B0-95-75-15-93-44 [ssidName] => eap225 [radioId] => 0 )
+```
+
 Apache access log:
 
 ```
@@ -29,18 +44,3 @@ RADIUS Access-Request logs:
 (0)   CHAP-Challenge = 0x2559c80c56135697e3520a7f9f987fab
 (0)   Message-Authenticator = 0x150529374b6f607913ab4b72f47fa97b
 ```
-
-For External captive portal without RADIUS the file `index.php` will be used. This code requires the use of cookies. Create a folder named `cookies` in the same folder where `index.php` is located and set its permissions such that the web server is able to write to it.
-
-For an Android client the redirect parameters are as follows:
-
-```
-Array ( [clientMac] => 70-8A-09-65-4D-EC [t] => 1611814464 [site] => Default [redirectUrl] => http://connectivitycheck.platform.hicloud.com/generate_204_f21c2352-3274-4ab1-8e8b-c00bbfc52ae4 [apMac] => B0-95-75-15-93-44 [ssidName] => eap225 [radioId] => 0 )
-```
-
-The basic code has been taken from [here](https://www.tp-link.com/us/support/faq/2907/) and adapted for our use. As of this writing (Feb 2021) the example code given on the TP Link website has a couple of mistakes:
-
-1. The time parameter's unit is milliseconds and not seconds as given on TP Link's website
-2. The parameter `authType: 4` has to be included in the authorization request
-
-This code has been tested on Omada Controller `v4.2.8` with EAP225 `v3.0 (Firmware version 5.0.0 Build 20200918 Rel. 58628)`
