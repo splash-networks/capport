@@ -1,15 +1,18 @@
 <?php
+session_start();
+
+if(isset($_GET['loginurl'])) {
+  $_SESSION['loginurl'] = $_GET['loginurl'];
+}
 
 if (isset($_POST['submit'])) {
+    $loginurl = $_SESSION['loginurl'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-header("Location: http://portal.draytek.com:8001/cgi-bin/wifilogin.cgi?username=".$username."&password=".$password);
-
+    header("Location: " . $loginurl . "?username=" . $username . "&password=" . $password);
 }
 ?>
-
 
 <html>
 <body>
