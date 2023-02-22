@@ -4,25 +4,14 @@ This is an example of a PHP based external captive portal for TP Link Omada Cont
 
 For "External RADIUS Server" with "External Web Portal" the required files are located in the `RADIUS` folder and consist of the files `index.php` and `login.php`. The file `radius.html` is taken from TP-Link's [website](https://www.tp-link.com/pk/support/faq/2912/) and only a single modification is made in Line 17: hardcoding the public IP of Omada Controller as the IP received in query string might contain private IP which is not useful for connecting back to the controller for user authorization if portal server is located on the internet. This setup will only work when the portal is HTTP based as HTTP to HTTPS connection from client side is blocked by browsers. This problem is resolved in `index.php` and `login.php` by using PHP and CURL for initiating API call to controller from server-side. For HTTPS based portals `index.php` and `login.php` should be used whereas for HTTP based portals `radius.html` may be used.
 
-For External captive portal without RADIUS the file `index.php` will be used. This code requires the use of cookies. Create a folder named `cookies` in the same folder where `index.php` is located and set its permissions such that the web server is able to write to it.
+For External captive portal without RADIUS the file `index.php` will be used. This code requires the use of cookies. Using the same CURL handle for both requests ensures that cookies are preserved.
 
-The basic code has been taken from [here](https://www.tp-link.com/us/support/faq/2907/) and adapted for our use. As of this writing (Feb 2021) the example code given on the TP Link website has a couple of mistakes:
-
-1. The time parameter's unit is milliseconds and not seconds as given on TP Link's website
-2. The parameter `authType: 4` has to be included in the authorization request
-
-This code has been tested on Omada Controller `v4.2.8` with EAP225 `v3.0 (Firmware version 5.0.0 Build 20200918 Rel. 58628)`
-
-For an Android client the redirect parameters are as follows:
-
-```
-Array ( [clientMac] => 70-8A-09-65-4D-EC [t] => 1611814464 [site] => Default [redirectUrl] => http://connectivitycheck.platform.hicloud.com/generate_204_f21c2352-3274-4ab1-8e8b-c00bbfc52ae4 [apMac] => B0-95-75-15-93-44 [ssidName] => eap225 [radioId] => 0 )
-```
+This code has been tested on Omada Controller `v5.9.9` with EAP225 `v3.0 Firmware version 5.0.9`
 
 Apache access log:
 
 ```
-192.168.8.201 - - [21/Aug/2021:06:13:30 +0000] "GET /favicon.ico HTTP/1.1" 404 491 "http://192.168.8.190/?target=192.168.8.175&targetPort=8088&clientMac=70-8A-09-65-4D-EC&clientIp=192.168.8.201&radiusServerIp=143.198.150.160&apMac=B0-95-75-15-93-44&gatewayMac=&scheme=http&ssidName=eap225&vid=&radioId=0&originUrl=http%3A%2F%2Fconnectivitycheck.platform.hicloud.com%2Fgenerate_204_c704af26-e5e0-49a2-b54c-dc172079b4ef" "Mozilla/5.0 (Linux; Android 9; VTR-AL00; HMSCore 3.0.3.301; GMSCore 21.26.21) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 HuaweiBrowser/11.0.7.303 Mobile Safari/537.36"
+192.168.100.165 - - [22/Feb/2023:06:31:54 +0000] "GET /?clientMac=52-DE-63-F1-E3-3B&clientIp=192.168.100.165&t=1677047514&site=Default&redirectUrl=http%3A%2F%2Fconnectivitycheck.gstatic.com%2Fgenerate_204&apMac=B0-95-75-15-93-44&ssidName=eap225&radioId=0 HTTP/1.1" 200 350 "http://192.168.100.164/?clientMac=52-DE-63-F1-E3-3B&clientIp=192.168.100.165&t=1677047514&site=Default&redirectUrl=http%3A%2F%2Fconnectivitycheck.gstatic.com%2Fgenerate_204&apMac=B0-95-75-15-93-44&ssidName=eap225&radioId=0" "Mozilla/5.0 (Linux; Android 13; SM-A336E Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/109.0.5414.117 Mobile Safari/537.36"
 ```
 
 RADIUS Access-Request logs:
