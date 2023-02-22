@@ -2,10 +2,11 @@
 
 ########### Set the following parameters according to your environment ###########
 
-// IP and port of Omada Controller
+// IP, port and ID of Omada Controller
 
-$controllerIP = '192.168.8.175';
+$controllerIP = '192.168.100.162';
 $controllerPort = '8043';
+$controllerID = 'c744a97a918f59638de69b783bdd6b4d';
 
 // Time duration in ms for which the client will be authorized on the network
 
@@ -24,7 +25,6 @@ $ssidName = $_GET["ssidName"];
 $t = $_GET["t"];
 $radioId = $_GET["radioId"];
 $site = $_GET["site"];
-$cookiePath = "cookies/".$clientMac;
 
 $curl = curl_init();
 
@@ -34,10 +34,9 @@ $postData = [
 ];
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://'.$controllerIP.':'.$controllerPort.'/api/v2/hotspot/login',
+  CURLOPT_URL => 'https://'.$controllerIP.':'.$controllerPort.'/'.$controllerID.'/api/v2/hotspot/login',
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_COOKIEJAR => $cookiePath,
-  CURLOPT_COOKIEFILE => $cookiePath,
+  CURLOPT_COOKIEFILE => '',
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 0,
@@ -54,8 +53,6 @@ curl_setopt_array($curl, array(
 
 $response = curl_exec($curl);
 
-curl_close($curl);
-
 if ($response !== false) {
   $json = json_decode($response, true);
   $csrfToken = $json['result']['token'];
@@ -68,22 +65,16 @@ $postData2 = [
   "clientMac" => $clientMac,
   "apMac" => $apMac,
   'ssidName' => $ssidName,
-  't' => $t,
   'radioId' => $radioId,
-  'site' => $site,
   'authType' => 4,
   'time' => $seconds
 ];
 
-$url = 'https://'.$controllerIP.':'.$controllerPort.'/api/v2/hotspot/extPortal/auth?token='.$csrfToken;
+$url = 'https://'.$controllerIP.':'.$controllerPort.'/'.$controllerID.'/api/v2/hotspot/extPortal/auth';
 
-$curlAuth = curl_init();
-
-curl_setopt_array($curlAuth, array(
+curl_setopt_array($curl, array(
   CURLOPT_URL => $url,
   CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_COOKIEJAR => $cookiePath,
-  CURLOPT_COOKIEFILE => $cookiePath,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
   CURLOPT_TIMEOUT => 0,
@@ -94,13 +85,14 @@ curl_setopt_array($curlAuth, array(
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS => json_encode($postData2),
   CURLOPT_HTTPHEADER => array(
-    'Content-Type: application/json'
+    'Content-Type: application/json',
+    'Csrf-Token: ' . $csrfToken,
   ),
 ));
 
-$res = curl_exec($curlAuth);
+$res = curl_exec($curl);
 
-curl_close($curlAuth);
+curl_close($curl);
 
 if ($res !== false) {
   $json = json_decode($res, true);
