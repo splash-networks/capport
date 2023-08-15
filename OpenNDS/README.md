@@ -10,7 +10,7 @@ OpenNDS supports FAS in 4 modes. The following files contain external portal cod
 | 1       | fas-1.php  |
 | 2 and 3 | fas-23.php |
 
-The code contained in these files is a simplified version of files that come with OpenNDS: `fas-hid.php`, `fas-aes.php` and `fas-aes-https.php`.
+These files are a simplified version of files that come with OpenNDS: `fas-hid.php`, `fas-aes.php` and `fas-aes-https.php`.
 
 Apache access logs for these modes are given below:
 
