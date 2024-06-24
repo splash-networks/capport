@@ -2,6 +2,10 @@
 
 This is an example of a PHP based external captive portal for Plasma Cloud. It has been tested with PA1200 AP. The code given here authorizes the user on the network. Any user engagement flow can be added to it based on one's requirements.
 
+The parameter `$uam_secret` needs to be updated in `connect.php` and has to match the UAM secret defined in Plasma Cloud.
+
+The username and password entered by the user is sent to the AP which then sends them to the configured RADIUS server for authentication.
+
 Here is Apache's access log:
 
 ```
