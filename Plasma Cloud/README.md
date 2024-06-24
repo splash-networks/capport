@@ -13,3 +13,5 @@ Here is Apache's access log:
 ```
 
 Plasma is based on Open Mesh and uses Coova Chilli for captive portal. The code given here is slightly modified from the Coova Chilli code available [here](https://github.com/splash-networks/capport/tree/master/Coova%20Chilli).
+
+Plasma's captive portal documentation is given [here](https://www.kaiwoo.ai/docs/captive-portal/) and redirection details are available [here](https://www.kaiwoo.ai/docs/splashpage-redirect/).
