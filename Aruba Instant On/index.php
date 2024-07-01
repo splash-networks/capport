@@ -1,7 +1,6 @@
 <?php
 
-// $posturl = $_GET['post']; # not used anymore, changed to switchip
-$posturl = $_GET['switchip'];
+$posturl = $_GET['post'];
 
 ?>
 <!doctype html>
