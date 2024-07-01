@@ -13,3 +13,9 @@ It is configured on the iAP like this:
 
 The files `index.php` and `login.php` are for auth text based login. The file `userlogin.html` is for username password based RADIUS login.
  It posts the entered username and password to `http://securelogin.arubanetworks.com` which resolves to the IP of the iAP.
+
+Apache access log:
+
+```
+"GET /?cmd=login&mac=9c:2e:a1:35:c0:d5&essid=affinect&ip=172.31.98.220&apname=b4%3A5d%3A50%3Aca%3A81%3Aea&apmac=b4%3A5d%3A50%3Aca%3A81%3Aea&vcname=SetMeUp-CA%3A81%3AEA&switchip=securelogin.arubanetworks.com&url=http%3A%2F%2Fconnect.rom.miui.com%2Fgenerate_204 HTTP/1.1"
+```
