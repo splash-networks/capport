@@ -2,7 +2,7 @@
 
 This is an example of a PHP based external captive portal for Cambium cnMaestro. It has been tested with cnPilot e410. The code given here authorizes the user on the network. Any user engagement flow can be added to it based on one's requirements.
 
-Note: The username password that are posted via `index.php` should exist in RADIUS.
+Note: The username password that is submitted via `index.php` should exist in RADIUS as well.
 
 Here is Apache's access log:
 
