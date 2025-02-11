@@ -1,5 +1,11 @@
 # Ruijie External Captive Portal
 
+Captive portal flow:
+
+Step 1: `/login`
+Step 2: `/auth`
+Step 3: `/portal`
+
 Apache access logs:
 
 ```
