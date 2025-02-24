@@ -6,7 +6,7 @@ Apache access log for Coova Chilli based firmwares:
 "GET /?res=notyet&uamip=10.1.0.1&uamport=3990&uamhttps=3992&challenge=aaa8552e4761ab74ded5e9b2a9454419&mac=3E-11-69-20-DB-27&ip=192.168.1.181&ssid=Wireless1&called=B4-79-C8-3C-4B-20&nasid=nas01&userurl=http%3a%2f%2fcaptive.apple.com%2fhotspot-detect.html&md=66C04DADCB3DD4EE8346374E5928D18E HTTP/1.1" 200 6109 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
 ```
 
-Newer firmwares use Ruckus Unleased. The code in `index.php` is for that.
+Newer firmwares use Ruckus Unleased. The code in `unleashed.php` is for that.
 
 Apache access log for Ruckus Unleashed:
 
@@ -53,3 +53,5 @@ FreeRADIUS debug log:
 (0)   Message-Authenticator = 0x3659ab5f1b72213ad75c26c56219b0b5
 (0)   Proxy-State = 0x323439
 ```
+
+The code for Ruckus Smartzone is in `smartzone.php`. It was tested on Virtual SmartZone v7.0.
