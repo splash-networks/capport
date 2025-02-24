@@ -2,26 +2,38 @@
 
 session_start();
 
+########### Set the following parameters according to your environment #########
+
+// Northbound Portal Interface credentials
+
+$username = 'admin';
+$password = 'Admin@123';
+
+// Redirect URL after successful user authorization
+
+$redirectURL = "https://www.google.com";
+
+################################################################################
+
+
 if (!isset($_POST['submit'])) {
   $_SESSION['url'] = "http://" . $_GET['nbiIP'] . ":9080/portalintf";
+  // In case of https: $_SESSION['url'] = "https://" . $_GET['nbiIP'] . ":9443/portalintf";
   $_SESSION['client_mac'] = $_GET['client_mac'];
   $_SESSION['uip'] = $_GET['uip'];
 } else {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-
   $postData = [
     "Vendor" => "ruckus",
-    "RequestUserName" => "admin",
-    "RequestPassword" => "Admin@123",
+    "RequestUserName" => $username,
+    "RequestPassword" => $password,
     "APIVersion" => "1.0",
     "RequestCategory" => "UserOnlineControl",
     "RequestType" => "Login",
     "UE-IP" => $_SESSION["uip"],
     "UE-MAC" => $_SESSION["client_mac"],
     "UE-Proxy" => "0",
-    "UE-Username" => $username,
-    "UE-Password" => $password
+    "UE-Username" => $_SESSION['client_mac'],
+    "UE-Password" => $_SESSION['client_mac']
   ];
 
   $curl = curl_init();
@@ -49,7 +61,12 @@ if (!isset($_POST['submit'])) {
 
   if ($response !== false) {
     $json = json_decode($response, true);
-    echo "<pre>" . json_encode($json, JSON_PRETTY_PRINT) . "</pre>";
+    $responseCode = $json['ResponseCode'];
+    if ($responseCode == 201 || $responseCode == 101) {
+      header("Location: " . $redirectURL);
+    } else {
+        echo "Error: check with your network administrator";
+    }
   }
   else {
     die("Error: check with your network administrator");
@@ -69,10 +86,8 @@ if (!isset($_POST['submit'])) {
 <p>Welcome!<br>
   Please login to our Wifi service</p>
 
-<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>>
-        <label>User Name: <input type="text" name="username"></label><br/>
-<label>Password: <input type="text" name="password"></label><br/>
-<input type="submit" name="submit" value="LOGIN" />
+<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <input type="submit" name="submit" value="LOGIN" />
 </form>
 </body>
 </html>
