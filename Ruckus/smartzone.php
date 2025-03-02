@@ -9,6 +9,10 @@ session_start();
 $username = 'admin';
 $password = 'Admin@123';
 
+// WAN IP or hostname
+
+$wan = "206.84.142.6";
+
 // Redirect URL after successful user authorization
 
 $redirectURL = "https://www.google.com";
@@ -17,8 +21,8 @@ $redirectURL = "https://www.google.com";
 
 
 if (!isset($_POST['submit'])) {
-  $_SESSION['url'] = "http://" . $_GET['nbiIP'] . ":9080/portalintf";
-  // In case of https: $_SESSION['url'] = "https://" . $_GET['nbiIP'] . ":9443/portalintf";
+  $_SESSION['url'] = "https://" . $wan . ":9443/portalintf";
+  // In case of http: $_SESSION['url'] = "http://" . $_GET['nbiIP'] . ":9080/portalintf";
   $_SESSION['client_mac'] = $_GET['client_mac'];
   $_SESSION['uip'] = $_GET['uip'];
 } else {
