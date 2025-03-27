@@ -4,7 +4,7 @@ $token = $_GET["token"];
 // Authorization Secret configured in Alta portal against this SSID
 $secret = "testing123";
 // API endpoint for user authorization
-$api_url = "https://api.prod.manage.alta.inc/wifi/auth"
+$api_url = "https://manage.alta.inc/api/wifi/auth"
 
 $curl = curl_init();
 
