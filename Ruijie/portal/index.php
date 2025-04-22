@@ -1,3 +1,3 @@
 <?php
 
-print_r($_GET);
+echo "You have connected successfully!";
