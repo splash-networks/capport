@@ -4,6 +4,6 @@ This repository is a collection of captive portal redirect parameters for variou
 
 *Notes on other systems that support captive portals*
 
-#### pfSense, OPNSense and PacketFence
+#### pfSense, OPNSense, PacketFence, Sophos
 
-pfSense, OPNsense and PacketFence only have an internal captive portal. They do not support external captive portals.
+These platforms only have an internal captive portal. They do not support external captive portals.
