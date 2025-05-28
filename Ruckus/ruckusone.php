@@ -14,11 +14,9 @@ $redirectURL = "https://splashnetworks.co";
 
 ################################################################################
 
-
 if (!isset($_POST['submit'])) {
   $_SESSION['url'] = "https://" . $_GET['nbiIP'] . "/portalintf";
   $_SESSION['client_mac'] = $_GET['client_mac'];
-  $_SESSION['uip'] = $_GET['uip'];
 } else {
   $postData = [
     "Vendor" => "ruckus",
