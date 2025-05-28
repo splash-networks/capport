@@ -6,7 +6,7 @@ Apache access log for Coova Chilli based firmwares:
 "GET /?res=notyet&uamip=10.1.0.1&uamport=3990&uamhttps=3992&challenge=aaa8552e4761ab74ded5e9b2a9454419&mac=3E-11-69-20-DB-27&ip=192.168.1.181&ssid=Wireless1&called=B4-79-C8-3C-4B-20&nasid=nas01&userurl=http%3a%2f%2fcaptive.apple.com%2fhotspot-detect.html&md=66C04DADCB3DD4EE8346374E5928D18E HTTP/1.1" 200 6109 "-" "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
 ```
 
-Newer firmwares use Ruckus Unleased. The code in `unleashed.php` is for that.
+Newer firmwares use Ruckus Unleased. Refer to [this link](https://github.com/splash-networks/capport/blob/master/Ruckus/unleashed.php) for Ruckus Unleashed code.
 
 Apache access log for Ruckus Unleashed:
 
@@ -14,7 +14,9 @@ Apache access log for Ruckus Unleashed:
 "GET /?sip=192.168.0.253&mac=b479c83c4b20&client_mac=5edec34d503d&uip=192.168.1.106&lid=&dn=&url=http%3a%2f%2fcaptive.apple.com%2fhotspot%2ddetect.html&ssid=Captive+Ruckus+Test&loc=&vlan=1 HTTP/1.0" 200 5193 "-" "CaptiveNetworkSupport-443.40.1 wispr"
 ```
 
-When using Ruckus virtual SmartZone (vSZ) the access log is like this:
+### Ruckus virtual SmartZone (vSZ)
+
+When using vSZ the access log is like this:
 
 ```
 "GET /?nbiIP=192.168.200.211&client_mac=ENCd2dbf9a1f1689ed0e5ab4c59c6ea8055bb6673892a41751e&domain_name=Administration+Domain&reason=Un-Auth-Captive&wlanName=ruckus&dn=scg.ruckuswireless.com&ssid=ruckus&mac=00:33:58:16:ef:20&url=http%3A%2F%2Fconnectivitycheck.gstatic.com%2Fgenerate_204&proxy=0&vlan=1&wlan=1&sip=scg.ruckuswireless.com&zoneName=8DT35_ORh3sMfx-OkfQWdsVkUHecuUNVnVoM7abVZ-Q_1740048752130&apip=192.168.200.32&sshTunnelStatus=1&uip=ENCb2579826807a6430655a4e4d78347972&StartURL=https%3A%2F%2Fwww.google.com HTTP/1.1" 200 4378 "-" "Mozilla/5.0 (Linux; Android 14; SM-A336E Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/133.0.6943.49 Mobile Safari/537.36"
@@ -54,4 +56,14 @@ FreeRADIUS debug log:
 (0)   Proxy-State = 0x323439
 ```
 
-The code for Ruckus Smartzone is in `smartzone.php`. It was tested on Virtual SmartZone v7.0.
+The code for Ruckus Smartzone is [given here](https://github.com/splash-networks/capport/blob/master/Ruckus/smartzone.php). It was tested on Virtual SmartZone v7.0.
+
+### Ruckus One
+
+Apache access log for Ruckus One:
+
+```
+"GET /?nbiIP=54fef4ddc72d4397b184d2039509aff4.wispr.eu.ruckus.cloud&client_mac=ba8a2045aeb1&domain_name=SUPPORTWIZARD&reason=Un-Auth-Captive&wlanName=bddcd6fd2b39449f89d8d2deb9846eae&dn=scg.ruckuswireless.com&ssid=RuckusCaptive&mac=00:33:58:16:ef:20&url=http%3A%2F%2Fwww.google.com%2Fgen_204&proxy=0&vlan=1&wlan=5&sip=54fef4ddc72d4397b184d2039509aff4.wispr.eu.ruckus.cloud&zoneName=_b6V24D54RYKpSx0rsJ561p_DEMNlHtGn3CXcj2s2Zzx7afbNrXtxgPaftnNRzd-_1748411692677&apip=192.168.200.30&sshTunnelStatus=1&uip=192.168.200.33&StartURL=https%3A%2F%2Fwww.google.com&venueId=4e583b43d7a04e55bd896a9559a05797&networkId=bddcd6fd2b39449f89d8d2deb9846eae HTTP/1.1" 200 4010 "-" "Mozilla/5.0 (Linux; Android 14; SM-A336E Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.60 Mobile Safari/537.36"
+```
+
+The code for Ruckus One is [given here](https://github.com/splash-networks/capport/blob/master/Ruckus/ruckusone.php).
