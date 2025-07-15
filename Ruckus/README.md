@@ -66,4 +66,35 @@ Apache access log for Ruckus One:
 "GET /?nbiIP=54fef4ddc72d4397b184d2039509aff4.wispr.eu.ruckus.cloud&client_mac=ba8a2045aeb1&domain_name=SUPPORTWIZARD&reason=Un-Auth-Captive&wlanName=bddcd6fd2b39449f89d8d2deb9846eae&dn=scg.ruckuswireless.com&ssid=RuckusCaptive&mac=00:33:58:16:ef:20&url=http%3A%2F%2Fwww.google.com%2Fgen_204&proxy=0&vlan=1&wlan=5&sip=54fef4ddc72d4397b184d2039509aff4.wispr.eu.ruckus.cloud&zoneName=_b6V24D54RYKpSx0rsJ561p_DEMNlHtGn3CXcj2s2Zzx7afbNrXtxgPaftnNRzd-_1748411692677&apip=192.168.200.30&sshTunnelStatus=1&uip=192.168.200.33&StartURL=https%3A%2F%2Fwww.google.com&venueId=4e583b43d7a04e55bd896a9559a05797&networkId=bddcd6fd2b39449f89d8d2deb9846eae HTTP/1.1" 200 4010 "-" "Mozilla/5.0 (Linux; Android 14; SM-A336E Build/UP1A.231005.007; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/136.0.7103.60 Mobile Safari/537.36"
 ```
 
+RADIUS Access-Request for Ruckus One:
+
+```
+(0) Received Access-Request Id 241 from 34.89.230.72:60684 to 10.142.0.2:1812 length 598
+(0)   User-Name = "be08cefb3ff9"
+(0)   User-Password = "be08cefb3ff9"
+(0)   NAS-IP-Address = 192.168.200.43
+(0)   Service-Type = Login-User
+(0)   Framed-IP-Address = 192.168.200.46
+(0)   Attr-26.25053.160 = 0x3534666566346464633732643433393762313834643230333935303961666634
+(0)   WISPr-Logoff-URL = "https://eu.ruckus.cloud/g/guest/api/tenant/54fef4ddc72d4397b184d2039509aff4/external"
+(0)   Ruckus-VLAN-ID = 1
+(0)   Ruckus-SSID = "splash"
+(0)   Ruckus-Wlan-Name = "df8136724faf41af84aa2dcf8250a87f"
+(0)   Ruckus-Zone-Name = "24fa688312cc48d4a004d00a574e07ca"
+(0)   Ruckus-Client-Host-Name = "be:08:ce:fb:3f:f9"
+(0)   Ruckus-Client-Os-Type = "Android"
+(0)   Ruckus-Client-Os-Class = "Android"
+(0)   Attr-26.25053.156 = 0x536d61727470686f6e6573
+(0)   Called-Station-Id = "00-33-58-16-EF-20:splash"
+(0)   Calling-Station-Id = "BE-08-CE-FB-3F-F9"
+(0)   NAS-Identifier = "00-33-58-56-EF-20"
+(0)   Acct-Session-Id = "3e7f51b8-7b19-4b2e-9875-1324cddc6070"
+(0)   NAS-Port-Type = Wireless-802.11
+(0)   Event-Timestamp = "Jul 15 2025 10:53:26 UTC"
+(0)   Message-Authenticator = 0x9fa1beada76bc768c4aaede69f543a0f
+(0)   Proxy-State = 0x3139
+(0)   Attr-26.25053.161 = 0x3534666566346464633732643433393762313834643230333935303961666634
+(0)   Ruckus-Auth-Server-Id = "012f1ae37273422b9ad7321bae83fb81"
+```
+
 The code for Ruckus One is [given here](https://github.com/splash-networks/capport/blob/master/Ruckus/ruckusone.php).
