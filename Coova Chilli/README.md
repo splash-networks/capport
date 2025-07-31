@@ -43,3 +43,23 @@ FreeRADIUS debug parameters for LigoWave:
 (0)   WISPr-Logoff-URL = "http://10.1.0.0:3990/logoff"
 (0)   Message-Authenticator = 0xf20fea1c075ca3459570ccb7be23307c
 ```
+
+## Note on Open Mesh Pre-auth
+
+Open Mesh devices do a pre-auth process when a user connects. It sends a RADIUS Access-Request with that user's MAC address as `User-Name` and empty `User-Password` (can be changed to MAC address by using the "Use MAC addr for password" toggle in Cloudtrax settings). If RADIUS accepts that request the user won't see the captive portal at all and would be connected directly. Here's the Access-Request in this case:
+
+```
+(0)   User-Name = "5A-0B-F7-02-A3-6E"
+(0)   Acct-Session-Id = "247c523b"
+(0)   NAS-Identifier = "SWZ_ssid4"
+(0)   Framed-IP-Address = 10.252.125.4
+(0)   NAS-Port-Id = "ssid4_247c523b"
+(0)   Calling-Station-Id = "5A-0B-F7-02-A3-6E"
+(0)   Called-Station-Id = "AC-86-74-A0-4C-18"
+(0)   Class = 0x47726f75703d33362c5376633d3531
+(0)   Event-Timestamp = "Jul 31 2025 07:03:03 UTC"
+(0)   Service-Type = Login-User
+(0)   User-Password = ""
+(0)   NAS-Port = 1
+(0)   NAS-IP-Address = 192.168.200.25
+```
