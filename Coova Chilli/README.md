@@ -46,7 +46,7 @@ FreeRADIUS debug parameters for LigoWave:
 
 ## Note on Open Mesh Pre-auth
 
-Open Mesh devices do a pre-auth process when a user connects. It sends a RADIUS Access-Request with that user's MAC address as `User-Name` and empty `User-Password` (can be changed to MAC address by using the "Use MAC addr for password" toggle in Cloudtrax settings). If RADIUS accepts that request the user won't see the captive portal at all and would be connected directly. Here's the Access-Request in this case:
+Open Mesh devices do a pre-auth process when a user connects. It sends a RADIUS Access-Request with that user's MAC address as `User-Name` and empty `User-Password` (can be changed to MAC address by using the **Use MAC addr for password** toggle in Cloudtrax settings). If RADIUS accepts that request the user won't see the captive portal at all and would be connected directly. Here's the Access-Request in this case:
 
 ```
 (0)   User-Name = "5A-0B-F7-02-A3-6E"
