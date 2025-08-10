@@ -1,11 +1,6 @@
 # Huawei External Captive Portal
 
-This portal has been tested on the following hardware:
-
-```
-Device: AirEngine5760-51
-Redirect Method: GET
-```
+This portal has been tested on the following hardware: `AirEngine5760-51 V200R024C00SPC100`
 
 Apache access log:
 ```
@@ -40,4 +35,12 @@ Example of RADIUS Access-Request Packet (in FreeRADIUS debug):-
 (14)   Attr-26.2011.201 = 0x5445524d494e414c2d504f532d593d30
 (14)   Attr-26.2011.201 = 0x576966692d44656e736974793d2d3335
 (14)   Attr-26.2011.201 = 0x48572d4163636573732d54696d653d31373438353734333237
+```
+
+## Pre-Auth
+
+Like some other devices such as Open Mesh, Huawei devies also perform a pre-auth step and if the user gets authorized the portal process is skipped altogether. The signature of that pre-auth RADIUS access-request packet is that it has a `Service-Type = "Call-Check"` attribute. This can be used to identify that it is a pre-auth request and can be dealt accordingly. For example, you may add the following line at the top of FreeRADIUS users file to always reject this request in order to trigger captive portal:
+
+```
+DEFAULT Service-Type == "Call-Check", Auth-Type := Reject
 ```
