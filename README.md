@@ -6,7 +6,7 @@ This repository is a collection of captive portal redirect parameters for variou
 
 #### Coova Chilli ####
 
-Many vendors use Coova Chilli as their captive portal package so the code given [here](https://github.com/splash-networks/capport/tree/master/Coova%20Chilli) will work for them. Some examples are Xirrus, LigoWave and OpenMesh. Some use Coova Chilli with slight variations, such as Cradlepoint and Plasma. Their codes are given in their respective folders.
+Many vendors use Coova Chilli as their captive portal package so the code given [here](https://github.com/splash-networks/capport/tree/master/Coova%20Chilli) will work for them. Some examples are Teltonika, Xirrus, LigoWave and OpenMesh. Some use Coova Chilli with slight variations, such as Cradlepoint and Plasma. Their codes are given in their respective folders.
 
 #### pfSense, OPNSense, PacketFence, Sophos
 
