@@ -1,4 +1,4 @@
-# Sonicwall External Captive Portal
+# SonicWall External Captive Portal
 
 Apache Access Log:
 
