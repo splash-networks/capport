@@ -30,3 +30,8 @@ FreeRADIUS Access Request:
 ```
 
 Tested on cloud hosted SaaS version of Alcatel-Lucent Enterprise OmniVista Cirrus 4.9.2 GA (Build 17.5.20, 2025-04-16) with AP Model OAW-AP1301.
+
+## References
+
+[Python based External Captive Portal for Alcatel Lucent](https://github.com/Samuelyip74/StellarExternalCP/tree/main)
+[OmniVista Guide](https://www.al-enterprise.com/-/media/assets/internet/documents/omnivista-2500-nms-4-8r2-installation-upgrade-guide.pdf)
