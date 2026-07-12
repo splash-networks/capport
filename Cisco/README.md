@@ -1,6 +1,10 @@
-# Cisco WLC External Captive Portal
+# Cisco External Captive Portal
 
-This is an example of a PHP based external captive portal for Cisco WLC. The code given here can be used to setup a basic captive portal featuring an HTML login form. This code is based on the following repository (refer to its README for further details):
+This is an example of a PHP based external captive portal for Cisco. 
+
+### WLC
+
+The code given in `wlc.php` can be used to setup a basic captive portal featuring an HTML login form. This code is based on the following repository (refer to its README for further details):
 
 https://github.com/stuartst/cisco-wlc-captive-portal
 
@@ -58,3 +62,35 @@ FreeRADIUS Debug Log for Cisco WLC (IOS):
 (0)   Airespace-Wlan-Id = 1
 (0)   NAS-Identifier = "WLC"
 ```
+
+### Meraki
+
+The code given in `meraki.php` is for Cisco Meraki. It has been tested with an MR28.
+
+Apache Access Log:
+
+```
+192.168.100.105 - - [12/Jul/2026:03:43:28 +0000] "GET /?login_url=https%3A%2F%2Fn949.network-auth.com%2Fsplash%2Flogin%3Fmauth%3DMMmc5c__SnY4RQwEalghmEiDOUJFbJteTogA_uW16i7bdbh3yHSzXrXMOCWFiim5ImfnL6sAdWzf7paxxA9cbvdaTPoRpWkT2Bgo_yhIjkOYECHBLgvfSoY77r6vG9-wEifDuakoGRANg-iZlIg8ky3qX9d_q7P_23vQfUQR7BQWkgPxShmT--bRJoyGpyzyQDA2miBR0mRy4%26continue_url%3Dhttps%253A%252F%252Fwww.google.com&continue_url=https%3A%2F%2Fwww.google.com&ap_mac=5c%3A06%3A10%3A48%3A04%3A45&ap_name=&ap_tags=&client_mac=de%3Af4%3A3c%3A18%3A06%3Adb&client_ip=10.115.190.13 HTTP/1.1" 200 4761 "-" "Mozilla/5.0 (Linux; Android 16; SM-A336E Build/BP2A.250605.031.A3; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/149.0.7827.159 Mobile Safari/537.36"
+```
+
+FreeRADIUS Log:
+
+```
+(0) Received Access-Request Id 2 from 216.157.133.143:50844 to 10.142.0.2:1812 length 244
+(0)   Message-Authenticator = 0x374363ee6f1045fee55975fe043b495a
+(0)   Acct-Session-Id = "3911939226325692155"
+(0)   Called-Station-Id = "5C-06-10-48-04-45:meraki"
+(0)   Calling-Station-Id = "DE-F4-3C-18-06-DB"
+(0)   Framed-IP-Address = 10.115.190.13
+(0)   NAS-Identifier = "Cisco Meraki cloud RADIUS client"
+(0)   NAS-IP-Address = 216.157.133.143
+(0)   NAS-Port = 0
+(0)   NAS-Port-Id = "Wireless-802.11"
+(0)   NAS-Port-Type = Wireless-802.11
+(0)   Service-Type = Login-User
+(0)   User-Name = "test"
+(0)   User-Password = "test"
+(0)   Meraki-Network-Name = "Splash Home"
+```
+
+[Reference](https://developer.cisco.com/meraki/captive-portal-api/sign-on-api/)
