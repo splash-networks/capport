@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>WiFi Portal</title></head>
+<body>
+<form onsubmit="login(); return false;">
+  Username: <input type="text" id="u"><br>
+  Password: <input type="password" id="p"><br>
+  <input type="submit" value="Login">
+</form>
+<div id="err"></div>
+<script>
+const q = new URLSearchParams(location.search);
+const mgmtUrl = 'https://soniclan.splashnetworks.co';
+const reqUrl = q.get('REQ');
+
+async function login() {
+  const r = await fetch(mgmtUrl + '/api/sonicos/auth', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Basic ' + btoa(document.getElementById('u').value + ':' + document.getElementById('p').value),
+      'Content-Type': 'application/json'
+    }
+  });
+  const d = await r.json();
+  const info = d.status.info[0];
+  if (r.ok) top.location.href = info.redirect_url || reqUrl;
+  else document.getElementById('err').textContent = info.message;
+}
+</script>
+</body>
+</html>
