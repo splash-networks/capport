@@ -2,7 +2,7 @@
 
 SonicWall has 2 captive portal implementations:
 
-Before v7.3.2:
+### Before v7.3.2:
 
 This uses a CGI script and does not support RADIUS (so portal deployment use cases are limited). The code for this scenario is given in `index.php`:
 
@@ -14,7 +14,7 @@ GET /index?ssid=&sessionId=d69349aaa90d870e06d35f68032d23bb&ip=192.168.1.196&mac
 
 Tested on NSv 270 with firmware version SonicOSX 7.3.1-7013.
 
-After v7.3.2:
+### After v7.3.2:
 
 The code for this is given in `api.html`. It requires a valid TLS certificate for the LAN port to be installed in the firewall, and the hostname needs to be included in `api.html` (it is `soniclan.splashnetworks.co` in our example). RADIUS is supported.
 
