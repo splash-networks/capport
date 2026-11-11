@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 	$postData = [
 		'sessId' => $_SESSION['sessionId'],
 		'userName' => $_SESSION['mac'],
-		'$sessionLifetime' => $sessionLifetime,
+		'sessionLifetime' => $sessionLifetime,
 		'idleTimeout' => $idleTimeout,
 	];
 
